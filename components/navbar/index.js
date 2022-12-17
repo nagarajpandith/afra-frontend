@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,9 +26,9 @@ function Navbar() {
     <nav className="bg-gray-800 lg:flex lg:items-center lg:justify-between p-4 fixed w-full z-10 top-0 left-0">
       <div className="flex items-center justify-between flex-shrink-0 text-white">
         <Image src="/logo.png" alt="AFRA Logo" width={30} height={30} />
-        <a href="#" className="font-semibold text-xl tracking-tight mr-6">
+        <Link className="font-semibold text-xl tracking-tight mr-6" href="/">
           AFRA
-        </a>
+        </Link>
         <div className="block lg:hidden">
           <button
             className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
@@ -52,22 +53,22 @@ function Navbar() {
       >
         <div className="text-sm lg:flex-grow">
           {navLinks.map(({ title, path, index }) => (
-            <a
+            <Link
               href={path}
               key={index}
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
             >
               {title}
-            </a>
+            </Link>
           ))}
         </div>
         <div>
-          <a
+          <Link
             href="/login"
             className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
           >
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

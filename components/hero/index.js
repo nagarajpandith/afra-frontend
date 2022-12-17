@@ -1,9 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Hero() {
   return (
     <div className="bg-gray-200 min-h-screen flex items-center justify-center md:p-0 p-5">
-      <div className="w-full max-w-md mt-20 lg:mt-0">
+      <div className="w-full max-w-md">
         <Image
           src="/logo.png"
           width={150}
@@ -23,9 +24,12 @@ function Hero() {
           landmarks against previously stored images in the database to mark
           your attendance.
         </p>
-        <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-teal">
-          Get Started
-        </button>
+
+        <Link href="/scan">
+          <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-teal">
+            Get Started
+          </button>
+        </Link>
       </div>
     </div>
   );
