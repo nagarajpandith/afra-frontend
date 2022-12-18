@@ -15,22 +15,27 @@ function Login() {
   ];
 
   const handleSubmit = async (formData) => {
+    const url =
+      activeTab === 'admin'
+        ? 'http://localhost/admin'
+        : 'http://localhost/enroller';
+
     const data = {
       id: formData.id,
       password: formData.password,
     };
 
-    const response = await fetch('http://localhost/admin', {
-        method: 'POST',
-        mode:'cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        credentials:"include"
+    const response = await fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+      credentials: 'include',
     });
     const responseData = await response.json();
-    console.log(responseData)
+    console.log(responseData);
     // Do something with the response data, such as redirecting to another page or displaying an error message
   };
 
