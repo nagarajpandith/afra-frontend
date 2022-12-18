@@ -16,14 +16,34 @@ function MyApp({ Component, pageProps, userRole }) {
 
 MyApp.getInitialProps = async (ctx) => {
   // fetch the user's role from API or a cookie
-  const checkUser = () => {
-    // by making a request to the server, we can check if the user is logged in and if they are an admin
-    return { isAdmin: false }; // just for now until backend is integrated
+  //use 
+  const checkUser = async() => {
+    const response = await fetch('http://localhost/', {
+        method: 'GET',
+        mode:'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials:"include"
+    });
+
+    const res=await response.json()
+
+    if(!res)
+    {
+        return null
+    }
+    if(res.isAdmin===true)
+      return { isAdmin: true };
+    else
+        return { isAdmin: false };
+    // by making a request to the server, we can check if the user is logged in and if they are an admin // just for now until backend is integrated
 
     // return null;
   };
 
-  const user = checkUser();
+  const user = await checkUser();
+//   const user = null;
 
   if (!user) {
     return { userRole: null };
