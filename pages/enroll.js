@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
 import { Form } from '../components/Form';
 import withAuth from '../components/isAuth';
 
 function Enroll() {
-  const [formData, setFormData] = useState({
-    usn: '',
-    code: '',
-  });
+  const handleSubmit = async (formData) => {
+    try {
+      const response = await fetch('http://localhost/enrollStudent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
+      if (response.ok) {
+        alert('Student enrolled successfully!');
+      } else {
+        alert('Error enrolling student: ' + response.statusText);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const fields = [
