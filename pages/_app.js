@@ -18,7 +18,7 @@ MyApp.getInitialProps = async (ctx) => {
   // fetch the user's role from API or a cookie
   //use 
   const checkUser = async() => {
-    const response = await fetch('http://localhost/', {
+    const response = await fetch('http://localhost', {
         method: 'GET',
         mode:'cors',
         headers: {

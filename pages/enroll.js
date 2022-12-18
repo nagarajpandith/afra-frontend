@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
 import { Form } from '../components/Form';
 import withAuth from '../components/isAuth';
 
 function Enroll() {
-  const [formData, setFormData] = useState({
-    usn: '',
-    code: '',
-  });
 
-  const handleSubmit =async (event) => {
-    // event.preventDefault();
-    console.log(event)
+  const handleSubmit =async (formData) => {
     const response = await fetch('http://localhost/enrollStudent', {
         method: 'POST',
         mode:'cors',
@@ -42,5 +35,6 @@ function Enroll() {
 
   return <Form fields={fields} submitText="Enroll" onSubmit={handleSubmit} />;
 }
+
 
 export default withAuth(Enroll);
