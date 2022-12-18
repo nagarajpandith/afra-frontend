@@ -20,6 +20,20 @@ function Scan() {
       }, 'image/jpeg');
     });
 
+    let f=new FormData();
+    f.append('code',courseCode)
+    f.append('file1',imageFile)
+    const response = await fetch('http://localhost/verify', {
+        method: 'POST',
+        mode:'cors',
+        headers: {
+            // 'Content-Type': 'application/json',
+        },
+        body: f,
+        credentials:"include"
+    });
+    const res=await response.json()
+    console.log(res)
     // Log the form data and image file
     console.log({ courseCode, imageFile });
   };
