@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '../button';
 
 function Hero() {
   return (
@@ -26,9 +27,7 @@ function Hero() {
         </p>
 
         <Link href="/scan">
-          <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-teal">
-            Get Started
-          </button>
+          <Button>Get Started</Button>
         </Link>
       </div>
     </div>

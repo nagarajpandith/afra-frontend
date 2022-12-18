@@ -14,6 +14,10 @@ function Navbar() {
       path: '/enroll',
     },
     {
+      title: 'Add Enroller',
+      path: '/register',
+    },
+    {
       title: 'Add Course',
       path: '/addcourse',
     },
@@ -52,10 +56,10 @@ function Navbar() {
         } menu`}
       >
         <div className="text-sm lg:flex-grow">
-          {navLinks.map(({ title, path, index }) => (
+          {navLinks.map(({ title, path }) => (
             <Link
               href={path}
-              key={index}
+              key={title}
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
             >
               {title}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '../components/button';
 
 function Login() {
   const [activeTab, setActiveTab] = useState('admin');
@@ -95,12 +96,7 @@ function Login() {
             />
           </div>
           <div className="flex items-center justify-between">
-            <button
-              className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-teal"
-              type="submit"
-            >
-              Sign In
-            </button>
+            <Button> Login </Button>
           </div>
         </form>
       </div>
