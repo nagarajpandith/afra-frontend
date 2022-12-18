@@ -20,14 +20,17 @@ function Login() {
       password: formData.password,
     };
 
-    const response = await fetch('http://localhost:80/admin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
+    const response = await fetch('http://localhost/admin', {
+        method: 'POST',
+        mode:'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        credentials:"include"
     });
     const responseData = await response.json();
+    console.log(responseData)
     // Do something with the response data, such as redirecting to another page or displaying an error message
   };
 

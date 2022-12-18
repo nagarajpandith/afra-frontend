@@ -9,9 +9,21 @@ const Register = () => {
     { name: 'department', label: 'Department', type: 'text' },
   ];
 
-  const handleSubmit = (formData) => {
+  const handleSubmit = async(formData) => {
     // add code to handle form submission here
-    console.log(formData);
+    const response = await fetch('http://localhost/register', {
+        method: 'POST',
+        mode:'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        credentials:"include"
+    });
+    const res=await response.json()
+
+    console.log(res);
+    // console.log(formData);
   };
 
   return (
