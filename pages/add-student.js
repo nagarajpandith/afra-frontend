@@ -28,8 +28,27 @@ const AddStudent = () => {
     },
   ];
 
-  const handleSubmit = (formData) => {
-    console.log(formData);
+  const handleSubmit = async (formData) => {
+    try {
+      // Create a new FormData object
+      const data = new FormData();
+
+      // Add the form data and file to the FormData object
+      data.append('usn', formData.usn);
+      data.append('name', formData.name);
+      data.append('department', formData.department);
+      data.append('image', formData.image);
+
+      // Send the POST request to the server with the FormData object as the request body
+      const response = await fetch('http://localhost/addStudent', {
+        method: 'POST',
+        body: data,
+      });
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
