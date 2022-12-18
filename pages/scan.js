@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import withAuth from '../components/isAuth';
 
 function Scan() {
   const inputRef = useRef(null);
@@ -80,4 +81,4 @@ function Scan() {
   );
 }
 
-export default Scan;
+export default withAuth(Scan);

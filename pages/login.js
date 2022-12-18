@@ -1,6 +1,5 @@
 import { Form } from '../components/form';
 import { useState } from 'react';
-import Router from 'next/router';
 import withAuth from '../components/isAuth';
 
 function Login() {
@@ -16,7 +15,20 @@ function Login() {
   ];
 
   const handleSubmit = async (formData) => {
-    console.log(formData);
+    const data = {
+      id: formData.id,
+      password: formData.password,
+    };
+
+    const response = await fetch('http://localhost:80/admin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    const responseData = await response.json();
+    // Do something with the response data, such as redirecting to another page or displaying an error message
   };
 
   return (

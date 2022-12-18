@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form } from '../components/Form';
+import withAuth from '../components/isAuth';
 
 function Enroll() {
   const [formData, setFormData] = useState({
@@ -30,4 +31,4 @@ function Enroll() {
   return <Form fields={fields} submitText="Enroll" onSubmit={handleSubmit} />;
 }
 
-export default Enroll;
+export default withAuth(Enroll);
