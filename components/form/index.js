@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../button';
 
-export const Form = ({ fields, submitText, onSubmit }) => {
+export const Form = ({ fields, submitText, onSubmit, onInputChange }) => {
   const [formState, setFormState] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -25,6 +25,7 @@ export const Form = ({ fields, submitText, onSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     validateForm();
+
     onSubmit(formState);
   };
 

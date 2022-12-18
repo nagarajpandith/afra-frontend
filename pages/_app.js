@@ -18,7 +18,9 @@ MyApp.getInitialProps = async (ctx) => {
   // fetch the user's role from API or a cookie
   const checkUser = () => {
     // by making a request to the server, we can check if the user is logged in and if they are an admin
-    return { isAdmin: true }; // just for now until backend is integrated
+    // return { isAdmin: true }; // just for now until backend is integrated
+
+    return null;
   };
 
   const user = checkUser();

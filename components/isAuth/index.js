@@ -5,7 +5,7 @@ const withAuth = (WrappedComponent) => {
   const AuthComponent = (props) => {
     const checkAuth = () => {
       // Make a request to the server to check if the user is logged in
-      return { isLoggedIn: true };
+      return { isLoggedIn: false };
     };
 
     const user = checkAuth();

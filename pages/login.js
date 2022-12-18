@@ -5,14 +5,6 @@ import withAuth from '../components/isAuth';
 
 function Login() {
   const [activeTab, setActiveTab] = useState('admin');
-  const [formData, setFormData] = useState({
-    id: '',
-    password: '',
-  });
-
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
 
   const handleTabClick = (e) => {
     setActiveTab(e.target.id);
@@ -23,10 +15,8 @@ function Login() {
     { name: 'password', label: 'Password', type: 'password', required: true },
   ];
 
-  const handleSubmit = (formData) => {
-    // add code to handle form submission here
+  const handleSubmit = async (formData) => {
     console.log(formData);
-    Router.push('/');
   };
 
   return (
@@ -45,23 +35,17 @@ function Login() {
         </li>
         <li className="mr-4">
           <button
-            id="user"
+            id="enroller"
             className={`${
-              activeTab === 'user' ? 'bg-teal-400 text-white' : ''
+              activeTab === 'enroller' ? 'bg-teal-400 text-white' : ''
             } font-bold text-lg rounded-full px-4 py-2`}
             onClick={handleTabClick}
           >
-            User
+            Enroller
           </button>
         </li>
       </ul>
-      <Form
-        fields={fields}
-        submitText="Log In"
-        onSubmit={handleSubmit}
-        formData={formData}
-        onInputChange={handleInputChange}
-      />
+      <Form fields={fields} submitText="Log In" onSubmit={handleSubmit} />
     </div>
   );
 }

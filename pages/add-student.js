@@ -1,11 +1,7 @@
 import { Form } from '../components/form';
 import withAdminRoute from '../components/adminRoute';
-import { useState } from 'react';
 
 const AddStudent = () => {
-  const [formState, setFormState] = useState({});
-  const [errors, setErrors] = useState({});
-
   const fields = [
     {
       name: 'usn',
@@ -26,12 +22,6 @@ const AddStudent = () => {
       placeholder: 'Enter department',
     },
     {
-      name: 'descriptions',
-      label: 'Descriptions',
-      type: 'text',
-      placeholder: 'Enter descriptions',
-    },
-    {
       name: 'image',
       label: 'Image',
       type: 'file',
@@ -39,14 +29,7 @@ const AddStudent = () => {
   ];
 
   const handleSubmit = (formData) => {
-    studentModel
-      .create(formData)
-      .then(() => {
-        // navigate to students list page or show a success message
-      })
-      .catch((error) => {
-        setErrors(error.errors);
-      });
+    console.log(formData);
   };
 
   return (
