@@ -30,22 +30,19 @@ const AddStudent = () => {
 
   const handleSubmit = async (formData) => {
     try {
-      // Create a new FormData object
-      const data = new FormData();
-
-      // Add the form data and file to the FormData object
-      data.append('usn', formData.usn);
-      data.append('name', formData.name);
-      data.append('department', formData.department);
-      data.append('image', formData.image);
-
-      // Send the POST request to the server with the FormData object as the request body
+      // Make a POST request to the backend route
       const response = await fetch('http://localhost/addStudent', {
         method: 'POST',
-        body: data,
+        body: formData,
       });
-      const result = await response.json();
-      console.log(result);
+
+      // If the request was successful, show a success message
+      if (response.ok) {
+        alert('Student added successfully!');
+      } else {
+        // If the request was unsuccessful, show an error message
+        alert('Error adding student: ' + response.statusText);
+      }
     } catch (error) {
       console.error(error);
     }
