@@ -19,13 +19,14 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     // submit form data, Check the active tab and call the respective API
     // If validation error, set the error message using setErrorMessage
     // If success, redirect to Scan/home page using Router.push('/scan')
   };
 
   return (
-    <div className="bg-gray-200 p-4 flex flex-col items-center">
+    <div className="bg-gray-200 flex flex-col items-center p-4">
       <ul className="flex justify-center">
         <li className="mr-4">
           <button
