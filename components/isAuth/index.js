@@ -24,9 +24,9 @@ const withAuth = (WrappedComponent) => {
 
         if (user.isLoggedIn) {
           // Redirect to the home page if the user is logged in
-          if (process.browser) {
-            Router.push('/');
-          }
+          // if (process.browser) {
+          //   Router.push('/');
+          // }
           return null;
         }
 

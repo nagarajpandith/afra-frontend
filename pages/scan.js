@@ -8,15 +8,20 @@ function Scan() {
   const [courseCode, setCourseCode] = useState('');
   const [cameraOpen, setCameraOpen] = useState(false);
 
-  const handleClick = () => {
-    // Set the canvas as the source for the video element
+  const handleClick = async () => {
     videoRef.current.src = canvasRef.current.toDataURL('image/jpeg');
 
-    // Stop the camera
     stopCamera();
 
-    // Log the form data and image data
-    console.log({ courseCode, imageData: videoRef.current.src });
+    // Get the image file from the canvas
+    const imageFile = await new Promise((resolve) => {
+      canvasRef.current.toBlob((blob) => {
+        resolve(new File([blob], 'image.jpg', { type: 'image/jpeg' }));
+      }, 'image/jpeg');
+    });
+
+    // Log the form data and image file
+    console.log({ courseCode, imageFile });
   };
 
   const startCamera = async () => {
