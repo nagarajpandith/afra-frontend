@@ -8,9 +8,21 @@ function Enroll() {
     code: '',
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
+  const handleSubmit =async (event) => {
+    // event.preventDefault();
+    console.log(event)
+    const response = await fetch('http://localhost/enrollStudent', {
+        method: 'POST',
+        mode:'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(event),
+        credentials:"include"
+    });
+    const res=await response.json()
+    console.log(res);
+    alert(res.message)
   };
 
   const fields = [

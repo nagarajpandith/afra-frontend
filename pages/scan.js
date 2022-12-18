@@ -34,6 +34,30 @@ function Scan() {
     });
     const res=await response.json()
     console.log(res)
+    let students=[]
+    if(response.status===200)
+    {
+        console.log("jsh")
+        res.map((student)=>{
+            if(student._label!=='unknown')
+            {
+                students.push(student._label)
+                console.log(students)
+            }
+        })
+        const respons = await fetch('http://localhost/getStudents', {
+            method: 'POST',
+            mode:'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({usns:students}),
+            credentials:"include"
+        });
+        const re=await respons.json()
+        console.log(re)
+    }
+
     // Log the form data and image file
     console.log({ courseCode, imageFile });
   };
