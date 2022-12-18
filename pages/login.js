@@ -1,5 +1,7 @@
 import { Form } from '../components/form';
 import { useState } from 'react';
+import Router from 'next/router';
+import withAuth from '../components/isAuth';
 
 function Login() {
   const [activeTab, setActiveTab] = useState('admin');
@@ -24,6 +26,7 @@ function Login() {
   const handleSubmit = (formData) => {
     // add code to handle form submission here
     console.log(formData);
+    Router.push('/');
   };
 
   return (
@@ -63,4 +66,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withAuth(Login);
