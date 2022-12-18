@@ -19,11 +19,11 @@ function Navbar() {
     },
     {
       title: 'Add Course',
-      path: '/addcourse',
+      path: '/add-course',
     },
     {
       title: 'Add Student',
-      path: '/addstudent',
+      path: '/add-student',
     },
   ];
   return (
