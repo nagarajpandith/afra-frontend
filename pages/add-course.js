@@ -1,4 +1,5 @@
 import { Form } from '../components/form';
+import withAdminRoute from '../components/adminRoute';
 
 const AddCourse = () => {
   const fields = [
@@ -17,4 +18,4 @@ const AddCourse = () => {
   );
 };
 
-export default AddCourse;
+export default withAdminRoute(AddCourse);

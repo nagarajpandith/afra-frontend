@@ -75,12 +75,13 @@ function Navbar({ userRole }) {
             </Link>
           ))}
         </div>
+
         <div>
           <Link
-            href="/login"
+            href={userRole ? '/logout' : '/login'}
             className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
           >
-            Login
+            {userRole ? 'Logout' : 'Login'}
           </Link>
         </div>
       </div>
