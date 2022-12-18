@@ -30,7 +30,10 @@ export const Form = ({ fields, submitText, onSubmit, onInputChange }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-10 m-5 rounded-lg">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white p-10 m-5 rounded-lg  max-w-md mx-auto"
+    >
       {fields.map((field) => (
         <div className="mb-4" key={field.name}>
           <label
@@ -44,7 +47,7 @@ export const Form = ({ fields, submitText, onSubmit, onInputChange }) => {
             name={field.name}
             id={field.name}
             value={formState[field.name]}
-            placeholder={field.placeholder}
+            placeholder={`Enter ${field.label}`}
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />

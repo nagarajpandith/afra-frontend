@@ -12,10 +12,6 @@ function Navbar({ userRole }) {
             path: '/scan',
           },
           {
-            title: 'Enroll Students',
-            path: '/enroll',
-          },
-          {
             title: 'Add Enroller',
             path: '/register',
           },
@@ -28,12 +24,18 @@ function Navbar({ userRole }) {
             path: '/add-student',
           },
         ]
-      : [
+      : userRole === 'enroller'
+      ? [
           {
             title: 'Scan Face',
             path: '/scan',
           },
-        ];
+          {
+            title: 'Enroll Students',
+            path: '/enroll',
+          },
+        ]
+      : [];
 
   return (
     <nav className="bg-gray-800 lg:flex lg:items-center lg:justify-between p-4 fixed w-full z-10 top-0 left-0">
