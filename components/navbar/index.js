@@ -2,30 +2,39 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-function Navbar() {
+function Navbar({ userRole }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navLinks = [
-    {
-      title: 'Scan Face',
-      path: '/scan',
-    },
-    {
-      title: 'Enroll Students',
-      path: '/enroll',
-    },
-    {
-      title: 'Add Enroller',
-      path: '/register',
-    },
-    {
-      title: 'Add Course',
-      path: '/add-course',
-    },
-    {
-      title: 'Add Student',
-      path: '/add-student',
-    },
-  ];
+  const navLinks =
+    userRole === 'admin'
+      ? [
+          {
+            title: 'Scan Face',
+            path: '/scan',
+          },
+          {
+            title: 'Enroll Students',
+            path: '/enroll',
+          },
+          {
+            title: 'Add Enroller',
+            path: '/register',
+          },
+          {
+            title: 'Add Course',
+            path: '/add-course',
+          },
+          {
+            title: 'Add Student',
+            path: '/add-student',
+          },
+        ]
+      : [
+          {
+            title: 'Scan Face',
+            path: '/scan',
+          },
+        ];
+
   return (
     <nav className="bg-gray-800 lg:flex lg:items-center lg:justify-between p-4 fixed w-full z-10 top-0 left-0">
       <div className="flex items-center justify-between flex-shrink-0 text-white">
