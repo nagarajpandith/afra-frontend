@@ -29,7 +29,7 @@ function Scan() {
   const handleClick = async () => {
     // videoRef.current.src = canvasRef.current.toDataURL('image/jpeg');
 
-    // stopCamera();
+    stopCamera();
 
     // // Get the image file from the canvas
     // const imageFile = await new Promise((resolve) => {
@@ -153,10 +153,10 @@ function Scan() {
       />
       <canvas ref={canvasRef} style={{ display: 'none' }} />
     </div>
-    <div>
+    <div className='flex justify-center'>
       <input 
       ref={inputRef}
-      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      className="shadow appearance-none border rounded w-1/4 flex py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
       type="file"
       name="file1" 
       />
