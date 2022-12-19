@@ -31,6 +31,24 @@ Attendance system with Face Recognition & Automation (AFRA), a cross-platform so
 <img src="https://www.tutorialsteacher.com/Content/images/home/mongodb.svg" height="50" width="50" />
 </p>
 
+### Screenshots
+1. Add Course
+![image7](https://user-images.githubusercontent.com/83623339/208424515-be809a44-c4e2-4a17-b4ee-8de45e7d8668.png)
+
+2. Add Student
+![image6](https://user-images.githubusercontent.com/83623339/208424591-f20f8be6-e286-4354-8071-6d5440a6c639.png)
+
+3. Add Enroller
+![image5](https://user-images.githubusercontent.com/83623339/208424634-5d4f922e-befd-40cc-b88f-13e5e83fda32.png)
+
+4. Get Attendance Sheet
+![image4](https://user-images.githubusercontent.com/83623339/208424719-192e533b-345a-4bf6-8494-1c21f05803f5.png)
+
+5. Scan Face
+![image3](https://user-images.githubusercontent.com/83623339/208424770-028eeb9b-d45e-49be-aa87-d89e7181b165.png)
+
+6. Attendance sheet
+![image2](https://user-images.githubusercontent.com/83623339/208425038-44765c85-c06f-4a7d-b466-1c5c80becfa7.png)
 
 ### Team Members
 
