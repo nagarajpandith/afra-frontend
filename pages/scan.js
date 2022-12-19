@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import withAuth from '../components/isAuth';
 
@@ -8,6 +9,23 @@ function Scan() {
   const [courseCode, setCourseCode] = useState('');
   const [cameraOpen, setCameraOpen] = useState(false);
 
+  const [link,setLink]=useState(()=>"")
+
+
+  const getAttendance=async()=>{
+    const response = await fetch('http://localhost/getAttendance', {
+        method: 'POST',
+        mode:'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({code:courseCode}),
+        credentials:"include"
+    });
+    const res=await response.json()
+    console.log(res.url)
+    setLink(()=>res.url.url.replaceAll('"',''))
+  }
   const handleClick = async () => {
     // videoRef.current.src = canvasRef.current.toDataURL('image/jpeg');
 
@@ -101,6 +119,18 @@ function Scan() {
         onChange={(event) => setCourseCode(event.target.value)}
         placeholder="Enter course code"
       />
+      <button
+        className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+        disabled={!courseCode}
+        onClick={getAttendance}
+      >
+        getAttendance
+      </button>
+      {link
+        ?<Link href={link}>
+            ATTENDANCE SHEET
+        </Link>:<></>
+      }
       <button
         className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
         disabled={!courseCode}
