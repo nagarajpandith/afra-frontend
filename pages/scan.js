@@ -9,17 +9,18 @@ function Scan() {
   const [cameraOpen, setCameraOpen] = useState(false);
 
   const handleClick = async () => {
-    videoRef.current.src = canvasRef.current.toDataURL('image/jpeg');
+    // videoRef.current.src = canvasRef.current.toDataURL('image/jpeg');
 
-    stopCamera();
+    // stopCamera();
 
-    // Get the image file from the canvas
-    const imageFile = await new Promise((resolve) => {
-      canvasRef.current.toBlob((blob) => {
-        resolve(new File([blob], 'image.jpg', { type: 'image/jpeg' }));
-      }, 'image/jpeg');
-    });
+    // // Get the image file from the canvas
+    // const imageFile = await new Promise((resolve) => {
+    //   canvasRef.current.toBlob((blob) => {
+    //     resolve(new File([blob], 'image.jpg', { type: 'image/jpeg' }));
+    //   }, 'image/jpeg');
+    // });
 
+    const imageFile = inputRef.current.files[0];
     let f=new FormData();
     f.append('code',courseCode)
     f.append('file1',imageFile)
@@ -90,6 +91,7 @@ function Scan() {
   };
 
   return (
+    <>
     <div className="flex flex-col items-center max-w-md mx-auto mt-10">
       <input
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -121,6 +123,16 @@ function Scan() {
       />
       <canvas ref={canvasRef} style={{ display: 'none' }} />
     </div>
+    <div>
+      <input 
+      ref={inputRef}
+      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      type="file"
+      name="file1" 
+      />
+
+    </div>
+    </>
   );
 }
 

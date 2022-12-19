@@ -53,19 +53,19 @@ const AddStudent = () => {
   }, [formData]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       // Make a POST request to the backend route
-      let f=new FormData()
-      console.log(formData)
-      f.append('label',formData.usn)
-      f.append('name',formData.name)
-      f.append('department',formData.department)
-      f.append('image',formData.image)
-      console.log(f)
+      let f = new FormData();
+      console.log(formData);
+      f.append('label', formData.usn);
+      f.append('name', formData.name);
+      f.append('department', formData.department);
+      f.append('image', formData.image);
+      console.log(f);
       const response = await fetch('http://localhost/addStudent', {
         method: 'POST',
-        mode:'cors',
+        mode: 'cors',
         // headers:{
         //     'Content-type':'multipart/form-data'
         // },
@@ -87,11 +87,16 @@ const AddStudent = () => {
 
   return (
     <div>
-      <form encType="multipart/form-data" onSubmit={handleSubmit}>
+      <form
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+        className="bg-white p-10 m-5 rounded-lg  max-w-md mx-auto"
+      >
         {fields.map((field) => (
           <div key={field.name}>
             <label htmlFor={field.name}>{field.label}</label>
             <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type={field.type}
               name={field.name}
               id={field.name}
@@ -100,9 +105,7 @@ const AddStudent = () => {
             />
           </div>
         ))}
-        <button type="submit" >
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
