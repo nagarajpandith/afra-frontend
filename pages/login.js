@@ -1,6 +1,7 @@
 import { Form } from '../components/form';
 import { useState } from 'react';
 import withAuth from '../components/isAuth';
+import Router from 'next/router';
 
 function Login() {
   const [activeTab, setActiveTab] = useState('admin');
@@ -35,7 +36,11 @@ function Login() {
       credentials: 'include',
     });
     const responseData = await response.json();
-    console.log(responseData);
+    if (responseData.error) {
+      alert(responseData.error);
+      return;
+    }
+    Router.push('/');
     // Do something with the response data, such as redirecting to another page or displaying an error message
   };
 

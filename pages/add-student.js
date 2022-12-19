@@ -1,7 +1,13 @@
-import { Form } from '../components/form';
 import withAdminRoute from '../components/adminRoute';
+import { useEffect, useState } from 'react';
 
 const AddStudent = () => {
+  const [formData, setFormData] = useState({
+    usn: '',
+    name: '',
+    department: '',
+    image: '',
+  });
   const fields = [
     {
       name: 'usn',
@@ -28,12 +34,37 @@ const AddStudent = () => {
     },
   ];
 
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+
+    if (event.target.name === 'image') {
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.files[0],
+      });
+    }
+  };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
   const handleSubmit = async (formData) => {
+
     try {
       // Make a POST request to the backend route
+      let f=new FormData()
+      f.append('usn',formData.usn)
+      f.append('name',formData.name)
+      f.append('department',formData.department)
+      f.append('image',formData.image)
       const response = await fetch('http://localhost/addStudent', {
         method: 'POST',
-        body: formData,
+        body: f,
+        credentials: 'include',
       });
 
       // If the request was successful, show a success message
@@ -50,7 +81,23 @@ const AddStudent = () => {
 
   return (
     <div>
-      <Form fields={fields} submitText="Add Student" onSubmit={handleSubmit} />
+      <form encType="multipart/form-data">
+        {fields.map((field) => (
+          <div key={field.name}>
+            <label htmlFor={field.name}>{field.label}</label>
+            <input
+              type={field.type}
+              name={field.name}
+              id={field.name}
+              required={field.required}
+              onChange={handleChange}
+            />
+          </div>
+        ))}
+        <button type="submit" onClick={handleSubmit}>
+          Submit
+        </button>
+      </form>
     </div>
   );
 };
